@@ -1,6 +1,6 @@
-package com.lpy.register.service;
+package com.lpy.marks.service;
 
-import com.lpy.register.model.User;
+import com.lpy.marks.model.User;
 
 public interface UserService {
     int deleteByPrimaryKey(Integer id);

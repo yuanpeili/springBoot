@@ -1,8 +1,8 @@
-package com.lpy.register.service.impl;
+package com.lpy.marks.service.impl;
 
-import com.lpy.register.dao.CityDao;
-import com.lpy.register.model.City;
-import com.lpy.register.service.CityService;
+import com.lpy.marks.dao.CityDao;
+import com.lpy.marks.model.City;
+import com.lpy.marks.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

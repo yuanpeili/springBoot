@@ -1,8 +1,8 @@
-package com.lpy.register.service.impl;
+package com.lpy.marks.service.impl;
 
-import com.lpy.register.dao.UserDao;
-import com.lpy.register.model.User;
-import com.lpy.register.service.UserService;
+import com.lpy.marks.dao.UserDao;
+import com.lpy.marks.model.User;
+import com.lpy.marks.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

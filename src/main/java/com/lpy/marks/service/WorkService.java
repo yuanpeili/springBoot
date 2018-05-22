@@ -1,6 +1,6 @@
-package com.lpy.register.service;
+package com.lpy.marks.service;
 
-import com.lpy.register.model.Work;
+import com.lpy.marks.model.Work;
 
 public interface WorkService {
     int deleteByPrimaryKey(Integer id);

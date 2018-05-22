@@ -1,6 +1,6 @@
-package com.lpy.register.service;
+package com.lpy.marks.service;
 
-import com.lpy.register.model.Apply;
+import com.lpy.marks.model.Apply;
 
 public interface ApplyService {
     int deleteByPrimaryKey(Integer id);

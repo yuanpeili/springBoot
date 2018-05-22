@@ -1,6 +1,6 @@
-package com.lpy.register.service;
+package com.lpy.marks.service;
 
-import com.lpy.register.model.BusinessDict;
+import com.lpy.marks.model.BusinessDict;
 
 public interface BusinessDictService {
     int deleteByPrimaryKey(Integer id);

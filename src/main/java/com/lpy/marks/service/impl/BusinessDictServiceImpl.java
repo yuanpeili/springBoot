@@ -1,8 +1,8 @@
-package com.lpy.register.service.impl;
+package com.lpy.marks.service.impl;
 
-import com.lpy.register.dao.BusinessDictDao;
-import com.lpy.register.model.BusinessDict;
-import com.lpy.register.service.BusinessDictService;
+import com.lpy.marks.dao.BusinessDictDao;
+import com.lpy.marks.model.BusinessDict;
+import com.lpy.marks.service.BusinessDictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

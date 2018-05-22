@@ -1,6 +1,6 @@
-package com.lpy.register.service;
+package com.lpy.marks.service;
 
-import com.lpy.register.model.JobInfo;
+import com.lpy.marks.model.JobInfo;
 
 public interface JobInfoService {
     int deleteByPrimaryKey(Integer id);

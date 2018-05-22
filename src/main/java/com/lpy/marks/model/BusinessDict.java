@@ -1,4 +1,4 @@
-package com.lpy.register.model;
+package com.lpy.marks.model;
 
 import java.io.Serializable;
 

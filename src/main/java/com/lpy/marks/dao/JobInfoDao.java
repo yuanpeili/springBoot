@@ -1,6 +1,6 @@
-package com.lpy.register.dao;
+package com.lpy.marks.dao;
 
-import com.lpy.register.model.JobInfo;
+import com.lpy.marks.model.JobInfo;
 import org.springframework.stereotype.Repository;
 
 @Repository

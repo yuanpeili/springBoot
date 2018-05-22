@@ -1,7 +1,7 @@
-package com.lpy.register.dao;
+package com.lpy.marks.dao;
 
 
-import com.lpy.register.model.BusinessDict;
+import com.lpy.marks.model.BusinessDict;
 import org.springframework.stereotype.Repository;
 
 @Repository

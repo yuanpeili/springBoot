@@ -1,7 +1,7 @@
-package com.lpy.register.dao;
+package com.lpy.marks.dao;
 
 
-import com.lpy.register.model.Company;
+import com.lpy.marks.model.Company;
 import org.springframework.stereotype.Repository;
 
 @Repository

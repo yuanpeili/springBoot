@@ -1,6 +1,6 @@
-package com.lpy.register.service;
+package com.lpy.marks.service;
 
-import com.lpy.register.model.City;
+import com.lpy.marks.model.City;
 
 public interface CityService {
     int deleteByPrimaryKey(Integer id);
