@@ -1,6 +1,5 @@
 package com.lpy.register.service;
 
-
 import com.lpy.register.model.City;
 
 public interface CityService {

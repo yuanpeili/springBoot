@@ -1,6 +1,5 @@
 package com.lpy.register.service;
 
-
 import com.lpy.register.model.Apply;
 
 public interface ApplyService {
