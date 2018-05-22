@@ -1,10 +1,8 @@
-package com.lpy.register.dao;
+package com.lpy.register.service;
 
 import com.lpy.register.model.JobInfo;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface JobInfoDao {
+public interface JobInfoService {
     int deleteByPrimaryKey(Integer id);
 
     int insert(JobInfo record);

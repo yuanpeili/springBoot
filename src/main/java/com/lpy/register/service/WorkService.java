@@ -1,10 +1,8 @@
-package com.lpy.register.dao;
+package com.lpy.register.service;
 
 import com.lpy.register.model.Work;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface WorkDao {
+public interface WorkService {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Work record);

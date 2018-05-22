@@ -1,11 +1,9 @@
-package com.lpy.register.dao;
+package com.lpy.register.service;
 
 
 import com.lpy.register.model.User;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UserDao {
+public interface UserService {
     int deleteByPrimaryKey(Integer id);
 
     int insert(User record);

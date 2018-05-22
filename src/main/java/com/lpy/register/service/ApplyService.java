@@ -1,11 +1,9 @@
-package com.lpy.register.dao;
+package com.lpy.register.service;
 
 
 import com.lpy.register.model.Apply;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface ApplyDao {
+public interface ApplyService {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Apply record);

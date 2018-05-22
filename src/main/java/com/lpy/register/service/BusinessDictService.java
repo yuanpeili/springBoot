@@ -1,11 +1,9 @@
-package com.lpy.register.dao;
+package com.lpy.register.service;
 
 
 import com.lpy.register.model.BusinessDict;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface BusinessDictDao {
+public interface BusinessDictService {
     int deleteByPrimaryKey(Integer id);
 
     int insert(BusinessDict record);

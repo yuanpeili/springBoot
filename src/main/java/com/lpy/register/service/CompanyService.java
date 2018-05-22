@@ -1,11 +1,9 @@
-package com.lpy.register.dao;
+package com.lpy.register.service;
 
 
 import com.lpy.register.model.Company;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface CompanyDao {
+public interface CompanyService {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Company record);
