@@ -1,37 +1,20 @@
 package com.lpy.marks.model;
 
-import java.io.Serializable;
+import lombok.Data;
 
-public class Apply implements Serializable {
+/**
+ * @author sandu-lipeiyuan
+ */
+@Data
+public class Apply extends AbstractPO {
+
+    private static final long serialVersionUID = 8563654983985899344L;
+
     private Integer id;
 
     private Integer userId;
 
     private Integer jobInfoId;
 
-    private static final long serialVersionUID = 1L;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public Integer getJobInfoId() {
-        return jobInfoId;
-    }
-
-    public void setJobInfoId(Integer jobInfoId) {
-        this.jobInfoId = jobInfoId;
-    }
 }
