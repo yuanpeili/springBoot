@@ -42,7 +42,7 @@ CREATE TABLE `apply_record`  (
 DROP TABLE IF EXISTS `business_dict`;
 CREATE TABLE `business_dict`  (
   `id` int(11) NOT NULL,
-  `business` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `business` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '行业名称',
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `version` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '版本号',
   `created_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
