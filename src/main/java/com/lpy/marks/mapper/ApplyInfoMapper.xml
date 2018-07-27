@@ -1,32 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="ApplyInfoMapper" >
-  <resultMap id="BaseResultMap" type="ApplyInfo" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="job_info_id" property="jobInfoId" jdbcType="INTEGER" />
-    <result column="version" property="version" jdbcType="VARCHAR" />
-    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
-    <result column="created_by" property="createdBy" jdbcType="INTEGER" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="update_by" property="updateBy" jdbcType="INTEGER" />
-    <result column="del_flag" property="delFlag" jdbcType="TINYINT" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="ApplyInfoMapper">
+    <resultMap id="BaseResultMap" type="ApplyInfo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="job_info_id" property="jobInfoId" jdbcType="INTEGER"/>
+        <result column="version" property="version" jdbcType="VARCHAR"/>
+        <result column="created_time" property="createdTime" jdbcType="TIMESTAMP"/>
+        <result column="created_by" property="createdBy" jdbcType="INTEGER"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="update_by" property="updateBy" jdbcType="INTEGER"/>
+        <result column="del_flag" property="delFlag" jdbcType="TINYINT"/>
+    </resultMap>
+    <sql id="where_list">
+        <if test="id != null">
+            id=#{id,jdbcType=INTEGER}
+        </if>
+        <if test="ids != null and ids.size > 0">
+            id in
+            <foreach collection="ids" index="index" item="id" open="(" separator="," close=")">
+                #{id,jdbcType=INTEGER}
+            </foreach>
+        </if>
+        <if test="jobInfoId != null">
+            job_info_id=#{jobInfoId,jdbcType=INTEGER}
+        </if>
+        <if test="jobInfoIds != null and jobInfoIds.size > 0">
+            job_info_id in
+            <foreach collection="jobInfoIds" index="index" item="jobInfoId" open="(" separator="," close=")">
+                #{jobInfoId,jdbcType=INTEGER}
+            </foreach>
+        </if>
+        <if test="delFlag != null">
+            del_flag=#{delFlag,jdbcType=TINYINT}
+        </if>
+        <if test="version != null">
+            version=#{version,jdbcType=VARCHAR}
+        </if>
+        <if test="createdTime != null">
+            created_time=#{createdTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="updateTime != null">
+            update_time=#{updateTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="createdBy != null">
+            created_by=#{createdBy,jdbcType=INTEGER}
+        </if>
+        <if test="updateBy != null">
+            update_By=#{updateBy,jdbcType=INTEGER}
+        </if>
+    </sql>
+    <sql id="Base_Column_List">
     id, user_id, job_info_id, version, created_time, created_by, update_time, update_by, 
     del_flag
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from apply_info
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from apply_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from apply_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="ApplyInfo" >
+    <insert id="insert" parameterType="ApplyInfo">
     insert into apply_info (id, user_id, job_info_id,
       version, created_time, created_by,
       update_time, update_by, del_flag
@@ -36,98 +74,98 @@
       #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=INTEGER}, #{delFlag,jdbcType=TINYINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="ApplyInfo" >
-    insert into apply_info
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="userId != null" >
-        user_id,
-      </if>
-      <if test="jobInfoId != null" >
-        job_info_id,
-      </if>
-      <if test="version != null" >
-        version,
-      </if>
-      <if test="createdTime != null" >
-        created_time,
-      </if>
-      <if test="createdBy != null" >
-        created_by,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-      <if test="updateBy != null" >
-        update_by,
-      </if>
-      <if test="delFlag != null" >
-        del_flag,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="jobInfoId != null" >
-        #{jobInfoId,jdbcType=INTEGER},
-      </if>
-      <if test="version != null" >
-        #{version,jdbcType=VARCHAR},
-      </if>
-      <if test="createdTime != null" >
-        #{createdTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createdBy != null" >
-        #{createdBy,jdbcType=INTEGER},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateBy != null" >
-        #{updateBy,jdbcType=INTEGER},
-      </if>
-      <if test="delFlag != null" >
-        #{delFlag,jdbcType=TINYINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="ApplyInfo" >
-    update apply_info
-    <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="jobInfoId != null" >
-        job_info_id = #{jobInfoId,jdbcType=INTEGER},
-      </if>
-      <if test="version != null" >
-        version = #{version,jdbcType=VARCHAR},
-      </if>
-      <if test="createdTime != null" >
-        created_time = #{createdTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createdBy != null" >
-        created_by = #{createdBy,jdbcType=INTEGER},
-      </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateBy != null" >
-        update_by = #{updateBy,jdbcType=INTEGER},
-      </if>
-      <if test="delFlag != null" >
-        del_flag = #{delFlag,jdbcType=TINYINT},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="ApplyInfo" >
+    <insert id="insertSelective" parameterType="ApplyInfo">
+        insert into apply_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="jobInfoId != null">
+                job_info_id,
+            </if>
+            <if test="version != null">
+                version,
+            </if>
+            <if test="createdTime != null">
+                created_time,
+            </if>
+            <if test="createdBy != null">
+                created_by,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="updateBy != null">
+                update_by,
+            </if>
+            <if test="delFlag != null">
+                del_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="jobInfoId != null">
+                #{jobInfoId,jdbcType=INTEGER},
+            </if>
+            <if test="version != null">
+                #{version,jdbcType=VARCHAR},
+            </if>
+            <if test="createdTime != null">
+                #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdBy != null">
+                #{createdBy,jdbcType=INTEGER},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateBy != null">
+                #{updateBy,jdbcType=INTEGER},
+            </if>
+            <if test="delFlag != null">
+                #{delFlag,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="ApplyInfo">
+        update apply_info
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="jobInfoId != null">
+                job_info_id = #{jobInfoId,jdbcType=INTEGER},
+            </if>
+            <if test="version != null">
+                version = #{version,jdbcType=VARCHAR},
+            </if>
+            <if test="createdTime != null">
+                created_time = #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdBy != null">
+                created_by = #{createdBy,jdbcType=INTEGER},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateBy != null">
+                update_by = #{updateBy,jdbcType=INTEGER},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag,jdbcType=TINYINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="ApplyInfo">
     update apply_info
     set user_id = #{userId,jdbcType=INTEGER},
       job_info_id = #{jobInfoId,jdbcType=INTEGER},
