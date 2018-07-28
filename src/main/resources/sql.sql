@@ -60,7 +60,7 @@ DROP TABLE IF EXISTS `city`;
 CREATE TABLE `city`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `region_id` int(11) DEFAULT NULL COMMENT '区域id',
-  `name` varchar(1536) DEFAULT NULL COMMENT '区域名称',,
+  `name` varchar(1536) DEFAULT NULL COMMENT '区域名称',
   `pid` int(11) DEFAULT NULL COMMENT '上级区域id',
   `level_id` int(11) DEFAULT NULL COMMENT '区域等级',
   `pids` varchar(255) DEFAULT NULL COMMENT '上级区域id集合，以,号隔开',
@@ -126,32 +126,7 @@ CREATE TABLE `job_info`  (
 -- ----------------------------
 -- Table structure for user
 -- ----------------------------
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user`  (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '姓名',
-  `age` int(11) NULL DEFAULT NULL  COMMENT '年龄',
-  `sex` tinyint(255) NULL DEFAULT NULL  COMMENT '性别',
-  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '手机号',
-  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '密码',
-  `we_chat_num` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '微信号',
-  `qq_num` int(11) NULL DEFAULT NULL  COMMENT 'qq号',
-  `high` int(11) NLL DEFAULT NULL  COMMENT '身高（cm）',
-  `wight` int(11) NLL DEFAULT NULL  COMMENT '体重（kg）',
-  `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '头像',
-  `idcard` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '身份证号',
-  `address` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '地址',
-  `emergency_contact` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '紧急联系人',
-  `emergency_contact_phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '紧急联系人电话',
-  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `version` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '版本号',
-  `created_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `created_by` int(255) NULL DEFAULT NULL COMMENT '创建人id',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `update_by` int(11) NULL DEFAULT NULL COMMENT '操作人',
-  `del_flag` tinyint(255) NULL DEFAULT 1 COMMENT '软删除标志（0：删除，1：正常）',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
 
 -- ----------------------------
 -- Table structure for work
@@ -173,3 +148,31 @@ CREATE TABLE `job`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user`  (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '姓名',
+  `age` int(11) NULL DEFAULT NULL  COMMENT '年龄',
+  `sex` tinyint(255) NULL DEFAULT NULL  COMMENT '性别',
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '手机号',
+  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '密码',
+  `we_chat_num` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '微信号',
+  `qq_num` int(11) NULL DEFAULT NULL COMMENT 'qq号',
+  `high` int(11) NULL DEFAULT NULL  COMMENT '身高（cm）',
+  `wight` int(11) NULL DEFAULT NULL  COMMENT '体重（kg）',
+  `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '头像',
+  `id_card` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '身份证号',
+  `address` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '地址',
+  `emergency_contact` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '紧急联系人',
+  `emergency_contact_phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL  COMMENT '紧急联系人电话',
+  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
+  `version` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '版本号',
+  `created_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `created_by` int(255) NULL DEFAULT NULL COMMENT '创建人id',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_by` int(11) NULL DEFAULT NULL COMMENT '操作人',
+  `del_flag` tinyint(255) NULL DEFAULT 1 COMMENT '软删除标志（0：删除，1：正常）',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;

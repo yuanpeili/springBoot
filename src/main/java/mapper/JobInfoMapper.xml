@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="src.main.java.mapper.JobInfoMapper" >
+  <resultMap id="BaseResultMap" type="src.main.java.dao.JobInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="job_id" property="jobId" jdbcType="INTEGER" />
+    <result column="job_name" property="jobName" jdbcType="VARCHAR" />
+    <result column="job_addr" property="jobAddr" jdbcType="VARCHAR" />
+    <result column="require" property="require" jdbcType="VARCHAR" />
+    <result column="job_num" property="jobNum" jdbcType="INTEGER" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="INTEGER" />
+    <result column="del_flag" property="delFlag" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_id, company_name, job_id, job_name, job_addr, require, job_num, start_time, 
+    end_time, remark, version, created_time, created_by, update_time, update_by, del_flag
+  </sql>
+  <sql id="where_list">
+    <if test="companyId != null">
+      company_id=#{companyId,jdbcType=INTEGER}
+    </if>
+    <if test="companyName != null">
+      company_name=#{companyName,jdbcType=VARCHAR}
+    </if>
+    <if test="jobId != null">
+      job_id=#{jobId,jdbcType=INTEGER}
+    </if>
+    <if test="jobName != null">
+      job_name=#{jobName,jdbcType=VARCHAR}
+    </if>
+    <if test="jobAddr != null">
+      job_addr=#{jobAddr,jdbcType=VARCHAR}
+    </if>
+    <if test="require != null">
+      require=#{require,jdbcType=VARCHAR}
+    </if>
+    <if test="jobNum != null">
+      job_num=#{jobNum,jdbcType=INTEGER}
+    </if>
+    <if test="startTime != null">
+      start_time=#{startTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endTime != null">
+      end_time=#{endTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="remark != null">
+      remark=#{remark,jdbcType=VARCHAR}
+    </if>
+    <if test="id != null">
+      id=#{id,jdbcType=INTEGER}
+    </if>
+    <if test="ids != null and ids.size > 0">
+      id in
+      <foreach collection="ids" index="index" item="id" open="(" separator="," close=")">
+        #{id,jdbcType=INTEGER}
+      </foreach>
+    </if>
+    <if test="delFlag != null">
+      del_flag=#{delFlag,jdbcType=TINYINT}
+    </if>
+    <if test="version != null">
+      version=#{version,jdbcType=VARCHAR}
+    </if>
+    <if test="createdTime != null">
+      created_time=#{createdTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateTime != null">
+      update_time=#{updateTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="createdBy != null">
+      created_by=#{createdBy,jdbcType=INTEGER}
+    </if>
+    <if test="updateBy != null">
+      update_By=#{updateBy,jdbcType=INTEGER}
+    </if>
+
+  </sql>
+  <select id="selectByOption" resultMap="BaseResultMap" parameterType="src.main.java.model.input.JobInfoQuery">
+    select
+    <include refid="Base_Column_List"/>
+    from job_info
+    <where>
+      <include refid="where_list"/>
+    </where>
+    order by id desc
+  </select>
+  <select id="countByOption" parameterType="src.main.java.model.input.JobInfoQuery"
+          resultType="java.lang.Integer">
+    select count(*) from job_info
+    <where>
+      <include refid="where_list"/>
+    </where>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from job_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from job_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="src.main.java.dao.JobInfo" >
+    insert into job_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="jobId != null" >
+        job_id,
+      </if>
+      <if test="jobName != null" >
+        job_name,
+      </if>
+      <if test="jobAddr != null" >
+        job_addr,
+      </if>
+      <if test="require != null" >
+        require,
+      </if>
+      <if test="jobNum != null" >
+        job_num,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobId != null" >
+        #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="jobName != null" >
+        #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobAddr != null" >
+        #{jobAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="require != null" >
+        #{require,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNum != null" >
+        #{jobNum,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="src.main.java.dao.JobInfo" >
+    update job_info
+    <set >
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobId != null" >
+        job_id = #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="jobName != null" >
+        job_name = #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobAddr != null" >
+        job_addr = #{jobAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="require != null" >
+        require = #{require,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNum != null" >
+        job_num = #{jobNum,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

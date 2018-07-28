@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE generatorConfiguration
-        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
@@ -37,7 +36,7 @@
 
         <!-- 生成model模型，对应的包路径，以及文件存放路径(targetProject)，targetProject可以指定具体的路径,如MAVEN，
             也可以使用“MAVEN”来自动生成，这样生成的代码会在target/generatord-source目录下 -->
-        <javaModelGenerator targetPackage="${generator.targetPackage}"
+        <javaModelGenerator targetPackage="${generator.targetPackage}.dao"
                             targetProject="MAVEN">
             <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
             <property name="enableSubPackages" value="false" />
@@ -46,14 +45,14 @@
         </javaModelGenerator>
 
         <!--对应的mapper.xml文件 -->
-        <sqlMapGenerator targetPackage="${generator.targetPackage}"
+        <sqlMapGenerator targetPackage="${generator.targetPackage}.xml"
                          targetProject="MAVEN">
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
 
         <!-- 对应的Mapper接口类文件 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="${generator.targetPackage}" targetProject="MAVEN">
+                             targetPackage="${generator.targetPackage}.mapper" targetProject="MAVEN">
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
 
@@ -63,9 +62,9 @@
                    是否生成 example类   -->
         <!--<table tableName="${gererator.tableName}" domainObjectName="${gererator.objectName}"-->
                <!--schema="${gererator.schema}"-->
-               <!--enableCountByExample="false" enableUpdateByExample="false"-->
-               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
-               <!--selectByExampleQueryId="false">-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
             <!--&lt;!&ndash; 忽略列，不生成bean 字段-->
             <!--<ignoreColumn column="FRED" />&ndash;&gt;-->
             <!--&lt;!&ndash; 指定列的java数据类型-->
@@ -74,97 +73,85 @@
             <!--<property name="useActualColumnNames" value="false" />-->
         <!--</table>-->
 
+        <!--<table tableName="apply_record" domainObjectName="ApplyRecord"-->
+               <!--schema="${gererator.schema}"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--&lt;!&ndash; 忽略列，不生成bean 字段-->
+            <!--<ignoreColumn column="FRED" />&ndash;&gt;-->
+            <!--&lt;!&ndash; 指定列的java数据类型-->
+            <!--<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  &ndash;&gt;-->
+            <!--&lt;!&ndash; 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格&ndash;&gt;-->
+            <!--<property name="useActualColumnNames" value="false" />-->
+        <!--</table>-->
 
-        <table tableName="apply" domainObjectName="Apply"
-               schema="${gererator.schema}"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <!-- 忽略列，不生成bean 字段
-            <ignoreColumn column="FRED" />-->
-            <!-- 指定列的java数据类型
-            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  -->
-            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
-            <property name="useActualColumnNames" value="false" />
-        </table>
+        <!--<table tableName="business_dict" domainObjectName="BusinessDict"-->
+               <!--schema="${gererator.schema}"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--&lt;!&ndash; 忽略列，不生成bean 字段-->
+            <!--<ignoreColumn column="FRED" />&ndash;&gt;-->
+            <!--&lt;!&ndash; 指定列的java数据类型-->
+            <!--<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  &ndash;&gt;-->
+            <!--&lt;!&ndash; 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格&ndash;&gt;-->
+            <!--<property name="useActualColumnNames" value="false" />-->
+        <!--</table>-->
 
-        <table tableName="apply_info" domainObjectName="ApplyInfo"
-               schema="${gererator.schema}"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <!-- 忽略列，不生成bean 字段
-            <ignoreColumn column="FRED" />-->
-            <!-- 指定列的java数据类型
-            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  -->
-            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
-            <property name="useActualColumnNames" value="false" />
-        </table>
+        <!--<table tableName="city" domainObjectName="City"-->
+               <!--schema="${gererator.schema}"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--&lt;!&ndash; 忽略列，不生成bean 字段-->
+            <!--<ignoreColumn column="FRED" />&ndash;&gt;-->
+            <!--&lt;!&ndash; 指定列的java数据类型-->
+            <!--<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  &ndash;&gt;-->
+            <!--&lt;!&ndash; 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格&ndash;&gt;-->
+            <!--<property name="useActualColumnNames" value="false" />-->
+        <!--</table>-->
 
-        <table tableName="business_dict" domainObjectName="BusinessDict"
-               schema="${gererator.schema}"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <!-- 忽略列，不生成bean 字段
-            <ignoreColumn column="FRED" />-->
-            <!-- 指定列的java数据类型
-            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  -->
-            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
-            <property name="useActualColumnNames" value="false" />
-        </table>
+        <!--<table tableName="company" domainObjectName="Company"-->
+               <!--schema="${gererator.schema}"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--&lt;!&ndash; 忽略列，不生成bean 字段-->
+            <!--<ignoreColumn column="FRED" />&ndash;&gt;-->
+            <!--&lt;!&ndash; 指定列的java数据类型-->
+            <!--<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  &ndash;&gt;-->
+            <!--&lt;!&ndash; 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格&ndash;&gt;-->
+            <!--<property name="useActualColumnNames" value="false" />-->
+        <!--</table>-->
 
+        <!--<table tableName="job" domainObjectName="Job"-->
+               <!--schema="${gererator.schema}"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--&lt;!&ndash; 忽略列，不生成bean 字段-->
+            <!--<ignoreColumn column="FRED" />&ndash;&gt;-->
+            <!--&lt;!&ndash; 指定列的java数据类型-->
+            <!--<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  &ndash;&gt;-->
+            <!--&lt;!&ndash; 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格&ndash;&gt;-->
+            <!--<property name="useActualColumnNames" value="false" />-->
+        <!--</table>-->
 
-        <table tableName="city" domainObjectName="City"
-               schema="${gererator.schema}"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <!-- 忽略列，不生成bean 字段
-            <ignoreColumn column="FRED" />-->
-            <!-- 指定列的java数据类型
-            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  -->
-            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
-            <property name="useActualColumnNames" value="false" />
-        </table>
+        <!--<table tableName="job_info" domainObjectName="JobInfo"-->
+               <!--schema="${gererator.schema}"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--&lt;!&ndash; 忽略列，不生成bean 字段-->
+            <!--<ignoreColumn column="FRED" />&ndash;&gt;-->
+            <!--&lt;!&ndash; 指定列的java数据类型-->
+            <!--<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  &ndash;&gt;-->
+            <!--&lt;!&ndash; 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格&ndash;&gt;-->
+            <!--<property name="useActualColumnNames" value="false" />-->
+        <!--</table>-->
 
-        <table tableName="job_info" domainObjectName="Job_Info"
-               schema="${gererator.schema}"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <!-- 忽略列，不生成bean 字段
-            <ignoreColumn column="FRED" />-->
-            <!-- 指定列的java数据类型
-            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  -->
-            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
-            <property name="useActualColumnNames" value="false" />
-        </table>
-        <table tableName="company" domainObjectName="Company"
-               schema="${gererator.schema}"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <!-- 忽略列，不生成bean 字段
-            <ignoreColumn column="FRED" />-->
-            <!-- 指定列的java数据类型
-            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  -->
-            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
-            <property name="useActualColumnNames" value="false" />
-        </table>
         <table tableName="user" domainObjectName="User"
-               schema="${gererator.schema}"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <!-- 忽略列，不生成bean 字段
-            <ignoreColumn column="FRED" />-->
-            <!-- 指定列的java数据类型
-            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  -->
-            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
-            <property name="useActualColumnNames" value="false" />
-        </table>
-        <table tableName="work" domainObjectName="Work"
                schema="${gererator.schema}"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"

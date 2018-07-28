@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="src.main.java.mapper.BusinessDictMapper" >
+  <resultMap id="BaseResultMap" type="src.main.java.dao.BusinessDict" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="business" property="business" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="INTEGER" />
+    <result column="del_flag" property="delFlag" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="where_list">
+    <if test="id != null">
+      id=#{id,jdbcType=INTEGER}
+    </if>
+    <if test="ids != null and ids.size > 0">
+      id in
+      <foreach collection="ids" index="index" item="id" open="(" separator="," close=")">
+        #{id,jdbcType=INTEGER}
+      </foreach>
+    </if>
+    <if test="business != null">
+      business=#{business,jdbcType=VARCHAR}
+    </if>
+    <if test="delFlag != null">
+      del_flag=#{delFlag,jdbcType=TINYINT}
+    </if>
+    <if test="version != null">
+      version=#{version,jdbcType=VARCHAR}
+    </if>
+    <if test="createdTime != null">
+      created_time=#{createdTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateTime != null">
+      update_time=#{updateTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="createdBy != null">
+      created_by=#{createdBy,jdbcType=INTEGER}
+    </if>
+    <if test="updateBy != null">
+      update_By=#{updateBy,jdbcType=INTEGER}
+    </if>
+    <if test="remark != null">
+      remark=#{remark,jdbcType=VARCHAR}
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, business, remark, version, created_time, created_by, update_time, update_by, 
+    del_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from business_dict
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByOption" resultMap="BaseResultMap" parameterType="src.main.java.model.input.BusinessDictQuery">
+    select
+    <include refid="Base_Column_List"/>
+    from business_dict
+    <where>
+      <include refid="where_list"/>
+    </where>
+    order by id desc
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from business_dict
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="src.main.java.model.BusinessDict" >
+    insert into business_dict
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="business != null" >
+        business,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="business != null" >
+        #{business,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByOption" parameterType="src.main.java.model.input.BusinessDictQuery" resultType="java.lang.Integer" >
+    select count(*) from business_dict
+    <where>
+      <include refid="where_list"/>
+    </where>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="src.main.java.model.BusinessDict" >
+    update business_dict
+    <set >
+      <if test="business != null" >
+        business = #{business,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
