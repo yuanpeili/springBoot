@@ -1,39 +1,50 @@
 package service.impl;
 
+import dao.UserMapper;
 import model.User;
+import model.User;
+import model.input.UserQuery;
 import model.input.UserQuery;
 import org.springframework.stereotype.Service;
 import service.UserService;
 
+import javax.annotation.Resource;
+
+/**
+ * @author sandu-lipeiyuan
+ */
 @Service
 public class UserServiceImpl implements UserService {
+    @Resource
+    private UserMapper userMapper;
+
     @Override
     public int countByOption(UserQuery example) {
-        return 0;
+        return userMapper.countByOption(example);
     }
 
     @Override
     public int selectByOption(UserQuery example) {
-        return 0;
+        return userMapper.selectByOption(example);
     }
 
     @Override
     public int deleteByPrimaryKey(Integer id) {
-        return 0;
+        return userMapper.deleteByPrimaryKey(id);
     }
 
     @Override
     public int insertSelective(User record) {
-        return 0;
+        return userMapper.insertSelective(record);
     }
 
     @Override
     public User selectByPrimaryKey(Integer id) {
-        return null;
+        return userMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public int updateByPrimaryKeySelective(User record) {
-        return 0;
+        return userMapper.updateByPrimaryKeySelective(record);
     }
 }

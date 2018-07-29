@@ -1,9 +1,12 @@
 package service.impl;
 
+import dao.ApplyRecordMapper;
 import model.ApplyRecord;
 import model.input.ApplyRecordQuery;
 import org.springframework.stereotype.Service;
 import service.ApplyRecordService;
+
+import javax.annotation.Resource;
 
 /**
  * @author m1760
@@ -12,33 +15,36 @@ import service.ApplyRecordService;
 public class ApplyRecordServiceImpl implements ApplyRecordService {
 
 
+    @Resource
+    private ApplyRecordMapper applyRecordMapper;
+
     @Override
     public int countByOption(ApplyRecordQuery example) {
-        return 0;
+        return applyRecordMapper.countByOption(example);
     }
 
     @Override
     public int selectByOption(ApplyRecordQuery example) {
-        return 0;
+        return applyRecordMapper.selectByOption(example);
     }
 
     @Override
     public int deleteByPrimaryKey(Integer id) {
-        return 0;
+        return applyRecordMapper.deleteByPrimaryKey(id);
     }
 
     @Override
     public int insertSelective(ApplyRecord record) {
-        return 0;
+        return applyRecordMapper.insertSelective(record);
     }
 
     @Override
     public ApplyRecord selectByPrimaryKey(Integer id) {
-        return null;
+        return applyRecordMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public int updateByPrimaryKeySelective(ApplyRecord record) {
-        return 0;
+        return applyRecordMapper.updateByPrimaryKeySelective(record);
     }
 }
