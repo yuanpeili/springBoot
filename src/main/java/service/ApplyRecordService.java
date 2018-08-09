@@ -1,13 +1,16 @@
 package service;
 
+import com.github.pagehelper.PageInfo;
+import common.ResultDTO;
 import model.ApplyRecord;
 import model.input.ApplyRecordQuery;
-import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 public interface ApplyRecordService {
     int countByOption(ApplyRecordQuery example);
 
-    int selectByOption(ApplyRecordQuery example);
+    List<ApplyRecord> selectByOption(ApplyRecordQuery example);
 
     int deleteByPrimaryKey(Integer id);
 
@@ -16,5 +19,7 @@ public interface ApplyRecordService {
     ApplyRecord selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(ApplyRecord record);
+
+    PageInfo<ApplyRecord> pageSelectByOption(ApplyRecordQuery example, Integer pageNo, Integer pageSize);
 
 }

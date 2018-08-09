@@ -1,14 +1,19 @@
 package service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import dao.UserMapper;
+import model.Company;
 import model.User;
-import model.User;
-import model.input.UserQuery;
+import model.input.CompanyQuery;
 import model.input.UserQuery;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import service.UserService;
 
 import javax.annotation.Resource;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author sandu-lipeiyuan
@@ -24,7 +29,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int selectByOption(UserQuery example) {
+    public List<User> selectByOption(UserQuery example) {
         return userMapper.selectByOption(example);
     }
 
@@ -46,5 +51,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public int updateByPrimaryKeySelective(User record) {
         return userMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public PageInfo<User> pageSelectByOption(UserQuery example, Integer pageNo, Integer pageSize) {
+        PageHelper.startPage(pageNo,pageSize);
+        List<User> userList = userMapper.selectByOption(example);
+        if(CollectionUtils.isEmpty(userList)){
+            return new PageInfo<>(Collections.EMPTY_LIST);
+        }
+        return new PageInfo<>(userList);
     }
 }

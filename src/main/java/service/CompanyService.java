@@ -1,12 +1,15 @@
 package service;
 
+import com.github.pagehelper.PageInfo;
 import model.Company;
 import model.input.CompanyQuery;
+
+import java.util.List;
 
 public interface CompanyService {
     int countByOption(CompanyQuery example);
 
-    int selectByOption(CompanyQuery example);
+    List<Company> selectByOption(CompanyQuery example);
 
     int deleteByPrimaryKey(Integer id);
 
@@ -15,4 +18,6 @@ public interface CompanyService {
     Company selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Company record);
+
+    PageInfo<Company> pageSelectByOption(CompanyQuery example, Integer pageNo, Integer pageSize);
 }

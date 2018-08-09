@@ -3,11 +3,14 @@ package dao;
 import model.JobInfo;
 import model.input.JobInfoQuery;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 @Repository
 public interface JobInfoMapper {
     int countByOption(JobInfoQuery example);
 
-    int selectByOption(JobInfoQuery example);
+    List<JobInfo> selectByOption(JobInfoQuery example);
 
     int deleteByPrimaryKey(Integer id);
 

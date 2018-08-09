@@ -1,14 +1,17 @@
 package service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import dao.JobInfoMapper;
 import model.JobInfo;
-import model.JobInfo;
-import model.input.JobInfoQuery;
 import model.input.JobInfoQuery;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import service.JobInfoService;
 
 import javax.annotation.Resource;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author sandu-lipeiyuan
@@ -25,7 +28,7 @@ public class JobInfoServiceImpl implements JobInfoService {
     }
 
     @Override
-    public int selectByOption(JobInfoQuery example) {
+    public List<JobInfo> selectByOption(JobInfoQuery example) {
         return jobInfoMapper.selectByOption(example);
     }
 
@@ -47,5 +50,15 @@ public class JobInfoServiceImpl implements JobInfoService {
     @Override
     public int updateByPrimaryKeySelective(JobInfo record) {
         return jobInfoMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public PageInfo<JobInfo> pageSelectByOption(JobInfoQuery example, Integer pageNo, Integer pageSize) {
+        PageHelper.startPage(pageNo,pageSize);
+        List<JobInfo> jobInfoList = jobInfoMapper.selectByOption(example);
+        if(CollectionUtils.isEmpty(jobInfoList)){
+            return new PageInfo<>(Collections.EMPTY_LIST);
+        }
+        return new PageInfo<>(jobInfoList);
     }
 }

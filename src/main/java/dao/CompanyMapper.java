@@ -3,11 +3,14 @@ package dao;
 import model.Company;
 import model.input.CompanyQuery;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 @Repository
 public interface CompanyMapper {
     int countByOption(CompanyQuery example);
 
-    int selectByOption(CompanyQuery example);
+    List<Company> selectByOption(CompanyQuery example);
 
     int deleteByPrimaryKey(Integer id);
 

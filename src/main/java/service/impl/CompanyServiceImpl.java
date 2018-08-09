@@ -1,15 +1,19 @@
 package service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import dao.CompanyMapper;
+import model.City;
 import model.Company;
-import model.Company;
+import model.input.CityQuery;
 import model.input.CompanyQuery;
-import model.input.CompanyQuery;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import service.CompanyService;
 
 import javax.annotation.Resource;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author sandu-lipeiyuan
@@ -26,7 +30,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public int selectByOption(CompanyQuery example) {
+    public List<Company> selectByOption(CompanyQuery example) {
         return companyMapper.selectByOption(example);
     }
 
@@ -48,5 +52,15 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public int updateByPrimaryKeySelective(Company record) {
         return companyMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public PageInfo<Company> pageSelectByOption(CompanyQuery example, Integer pageNo, Integer pageSize) {
+        PageHelper.startPage(pageNo,pageSize);
+        List<Company> companyList = companyMapper.selectByOption(example);
+        if(CollectionUtils.isEmpty(companyList)){
+            return new PageInfo<>(Collections.EMPTY_LIST);
+        }
+        return new PageInfo<>(companyList);
     }
 }

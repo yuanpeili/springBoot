@@ -3,11 +3,14 @@ package dao;
 import model.BusinessDict;
 import model.input.BusinessDictQuery;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 @Repository
 public interface BusinessDictMapper {
     int countByOption(BusinessDictQuery example);
 
-    int selectByOption(BusinessDictQuery example);
+    List<BusinessDict> selectByOption(BusinessDictQuery example);
 
     int deleteByPrimaryKey(Integer id);
 

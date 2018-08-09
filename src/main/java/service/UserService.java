@@ -1,12 +1,15 @@
 package service;
 
+import com.github.pagehelper.PageInfo;
 import model.User;
 import model.input.UserQuery;
+
+import java.util.List;
 
 public interface UserService {
     int countByOption(UserQuery example);
 
-    int selectByOption(UserQuery example);
+    List<User> selectByOption(UserQuery example);
 
     int deleteByPrimaryKey(Integer id);
 
@@ -15,4 +18,6 @@ public interface UserService {
     User selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(User record);
+
+    PageInfo<User> pageSelectByOption(UserQuery example, Integer pageNo, Integer pageSize);
 }
